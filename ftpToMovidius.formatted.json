@@ -1,0 +1,114 @@
+[
+    {
+        "id": "b5d13c2b.ed0aa",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "bede6a16.5be988",
+        "type": "ftp-server",
+        "z": "b5d13c2b.ed0aa",
+        "name": "Pi3ncs ftp server",
+        "port": "31415",
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "b534867f.0bb298"
+            ]
+        ]
+    },
+    {
+        "id": "387adf46.25154",
+        "type": "debug",
+        "z": "b5d13c2b.ed0aa",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 430,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "b534867f.0bb298",
+        "type": "rbe",
+        "z": "b5d13c2b.ed0aa",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "property": "topic",
+        "x": 270,
+        "y": 120,
+        "wires": [
+            [
+                "d1f02b47.9636d8",
+                "387adf46.25154"
+            ]
+        ]
+    },
+    {
+        "id": "d1f02b47.9636d8",
+        "type": "mqtt out",
+        "z": "b5d13c2b.ed0aa",
+        "name": "Motioneye filename",
+        "topic": "",
+        "qos": "0",
+        "retain": "false",
+        "broker": "ae3cbbdf.a36858",
+        "x": 520,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6ee9c53b.f0437c",
+        "type": "comment",
+        "z": "b5d13c2b.ed0aa",
+        "name": "ftp server to Movidius NCS AI",
+        "info": "Accept an image from a security DVR via ftp and pass it via MQTT to a python script that runs the Movidius AI object dector for finding a \"person\" in the image.\n\nCould it be simpler?\n\nI might be abusing the MQTT topic hierarchy to pass int he file path and name, but that is the beuaty of MQTT smart topic choices initially can save a lot of work later!\n",
+        "x": 180,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "b7b191c8.d3a93",
+        "type": "comment",
+        "z": "b5d13c2b.ed0aa",
+        "name": "pi3ncs as wifi AP",
+        "info": "I've configured this Pi3 to be a wifi access point\n\nIt IP is 10.2.141.1\n\nSSID: raspi-webgui  WPA2-PSK: SetMe!toYours\n\nMotioneye may need to have the ftp server reconfigured.\n",
+        "x": 140,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ae3cbbdf.a36858",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "Motioneye",
+        "birthQos": "2",
+        "birthRetain": "true",
+        "birthPayload": "Modivius ftp server is running.",
+        "closeTopic": "Motioneye",
+        "closeQos": "2",
+        "closeRetain": "true",
+        "closePayload": "Modivis ftp server is stopped.",
+        "willTopic": "Motioneye",
+        "willQos": "2",
+        "willRetain": "true",
+        "willPayload": "Modivus ftp server has crashed!"
+    }
+]
