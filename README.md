@@ -27,11 +27,20 @@ Suitable cases for the Pi3 and PiZero-W (I used the "official" Pi Foundation cas
 ## Base software
 ### AI host
 Install latest Raspbian "stretch" and Movidius sdk (API only) as clearly described here:
+
 https://www.pyimagesearch.com/2018/02/12/getting-started-with-the-intel-movidius-neural-compute-stick/
+
 #### Extra required software:
-mqtt, node-red-contrib-ftp-server, paho-mqtt, sample code from here:
+After getting the Movidius installed and running install these extras:
+
+mqtt, node-red-contrib-ftp-server, paho-mqtt, using apt-get, pip and npm.  I hope to put up moredetailed directions on the Wiki soon.
+
+You will need the Movidius sample python code from here:
+
 https://www.pyimagesearch.com/2018/02/19/real-time-object-detection-on-the-raspberry-pi-with-the-movidius-ncs/
+
 to get the precompiled mobilenetgraph file for the NCS, and the python script I started with, along with a nice code walk through that will help you understand what is going on and see how simple my changes really were. I believe the mobilenetgraph file came from here:
+
 https://github.com/chuanqi305/MobileNet-SSD
 
 
