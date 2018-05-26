@@ -35,7 +35,7 @@ https://www.pyimagesearch.com/2018/02/12/getting-started-with-the-intel-movidius
 #### Extra required software:
 After getting the Movidius installed and running install these extras:
 
-mqtt, node-red-contrib-ftp-server, paho-mqtt, using apt-get, pip and npm.  I hope to put up more detailed directions on the Wiki as soon as I figure out how to use it.
+mqtt, node-red-contrib-ftp-server, paho-mqtt, using apt-get, npm, and pip.  I hope to put up more detailed directions on the Wiki as soon as I figure out how to use it.
 
 #### You will need the Movidius graph file and sample python code from here:
 
@@ -46,6 +46,23 @@ to get the precompiled mobilenetgraph file for the NCS, and the python script th
 I believe the mobilenetgraph file came from here:
 
 https://github.com/chuanqi305/MobileNet-SSD
+
+
+#### Installation is very simple, but fragile at this point.
+1. Once you've verified your Movidius installation and downloaded the Mobilenet-SSD graph and installed the extra stuff I used, all you have to do is download the project AI_detection.py script to the same sub-directory as the graphs directory from the PyImageSearch example.  (Or you could edit the AI_detection.py script to load it from the location where you have saved the graph file.) Next download the project ftpToMovidius.formatted.json file, import it into node-red and deploy it.
+2. Configure your DVR to ftp jpeg "snapshots" to the node-red ftp server "flow" using port 31415 user pi with the password you've changed to after the Raspbian installation.
+3. This is where one size doesn't fit all as different DVRs will want to impose a different directory layout on the server.  If you configure MotioneyeOS as in the next section as shown below it'll match the defaults.  Otherwise you need to edit the python script variables 
+from the defautls (shown below) to match the paths your DVR wants to produce.
+    - ftpdFQN="/home/pi/Meye/2018-05-20/10-35-12.jpg"
+    - ftpdPath="/home/pi/Meye/2018-05-20"
+    - ftpdTopic="/home/pi/Meye"
+    - subscribeTopic="/home/pi/Meye/#"
+4. With he AI Host booted to the GU,I start the AI from a terminal with:
+   - cd /path_to_where_you_put_it
+   - python AI_detection.py -d 2
+5. You can now test things by using an ftp client to upload some sample security camera snapshot images.  You should see the original image resized 300x300 to send to the Movidius in a small window, and if a person is detected in the image the output with a box drawn around the person in a window that automatically resizes to original jpeg size.  Once you've gotten this far you are ready to let the DVR send files to the AI and see the results.
+6.  Remember this is not a "ready to go" project, although I'd like to get it there with your help!
+
 
 
 ### MotioneyeOS DVR (if not using your existing one)
@@ -71,6 +88,7 @@ https://github.com/ccrisan/motioneyeos/wiki/Configuration
 ## ftp settings for MotioneyeOS or your existing DVR
   - Server:  IP or name (if DNS works on your LAN) of your AI Host, must be same subnet as DVR
   - Port: 31415 (clever ey?)
+  - 
   
 
 
