@@ -50,6 +50,11 @@ https://github.com/chuanqi305/MobileNet-SSD
 
 #### Installation is very simple, but fragile at this point.
 1. Once you've verified your Movidius installation and downloaded the Mobilenet-SSD graph and installed the extra stuff I used, all you have to do is download the project AI_detection.py script to the same sub-directory as the graphs directory from the PyImageSearch example.  (Or you could edit the AI_detection.py script to load it from the location where you have saved the graph file.) Next download the project ftpToMovidius.formatted.json file, import it into node-red and deploy it.
+
+  It is probably best to start with the Pi connected to a monitor running the GUI, then you can watch it in action.
+   - python AI_detection.py -d 2
+   - using the -d 2 option will show the resized image sent to the Movidius, and the detection on the original if a person is detected in a pair of OpenCV windows.
+
 2. Configure your DVR to ftp jpeg "snapshots" to the node-red ftp server "flow" using port 31415 user pi with the password you've changed to after the Raspbian installation.
 3. This is where one size doesn't fit all as different DVRs will want to impose a different directory layout on the server.  If you configure MotioneyeOS as in the next section as shown below it'll match the defaults.  Otherwise you need to edit the python script variables 
 from the defautls (shown below) to match the paths your DVR wants to produce.
@@ -79,7 +84,6 @@ Configure to meet your needs as shown here:
 
 https://github.com/ccrisan/motioneyeos/wiki/Configuration
 
-(I need to flesh this out to be clear with my MotioneyeOS running to get sections and settings right)
 - I recommend turning off "Movies" and "Notification"
 - Motion detection needs to be on, set to snapshots on motion detection.
 - Upload Media Files needs to be on
@@ -88,8 +92,12 @@ https://github.com/ccrisan/motioneyeos/wiki/Configuration
 ## ftp settings for MotioneyeOS or your existing DVR
   - Server:  IP or name (if DNS works on your LAN) of your AI Host, must be same subnet as DVR
   - Port: 31415 (clever ey?)
-  - 
-  
+ 
 
+# Others thinking along the same line that I'm aware of:
+
+https://github.com/debsahu/PiCamMovidius
+
+This is pretty much the same function as the PyImageSearch real-time tutorial but using a PiZero-W instead of a Pi3, with MQTT added to use Home Automation for notifications.  Also seems he's found a pre-compiled OpenCV-3.2 and used it with YoLo network.  I was extremly impressed with Darknet YOLO, but it took 18 seconds to process an image on my i7 desktop, I never could get tinyYOLO to do anything.
 
 
