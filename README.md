@@ -90,6 +90,8 @@ https://github.com/ccrisan/motioneyeos/wiki/Configuration
 ## ftp settings for MotioneyeOS or your existing DVR
   - Server:  IP or name (if DNS works on your LAN) of your AI Host, must be same subnet as DVR
   - Port: 31415 (clever ey?)
+  - User: Pi (or whatever you've changed it to)
+  - Password: I sure hope you still aren't using the default raspberry Pi password!
  
 
 # Others thinking along the same line that I'm aware of:
