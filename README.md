@@ -1,7 +1,7 @@
 # SecurityDVR_AI_addon
 A simple, relatively inexpensive, demo/development system to add AI to a video security system DVR using a Raspberry Pi 3 and an Intel Movidius Neural Compute Stick.   This is not a project/product I plan to peddle, I'm not the first to think of doing this, but I'm finally far enough along with help from some fantastic open source projects (to be credited below) that I think I can help jumpstart others with similar ideas, whom I'd hope would share to evolve this into a easy to use system to make late night news broadcasts of security camera footage with pleas of "if you recognize them contact Crimestoppers" a thing of the past becasue timely push notification to a responsible party gets the police on the scene fast enough to catch the vermin red-handed!
 
-##Photos of the demo system:
+## Photos of the demo system:
 https://github.com/wb666greene/SecurityDVR_AI_addon/wiki/AI-Host-Installation
 
 ## Hardware Requirements
