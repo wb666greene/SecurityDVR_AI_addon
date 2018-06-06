@@ -96,8 +96,18 @@ https://github.com/ccrisan/motioneyeos/wiki/Configuration
 
 # Others thinking along the same line that I'm aware of:
 
-https://github.com/debsahu/PiCamMovidius
+1. https://github.com/debsahu/PiCamMovidius
 
 This is pretty much the same function as the PyImageSearch real-time tutorial but using a PiZero-W instead of a Pi3, with MQTT added to use Home Automation for notifications.  Also seems he's found a pre-compiled OpenCV-3.2 and used it with YoLo network.  I was extremly impressed with Darknet YOLO, but it took 18 seconds to process an image on my i7 desktop, I never could get tinyYOLO to do anything.
+
+
+2. Security-cam example ( tip of the hat to MrJBSwe for sending these to me):
+
+https://ai.intel.com/practical-applications-of-deep-learning-build-a-diy-smart-security-camera-using-the-intel-movidius-neural-compute-stick/
+
+This one seems to be a large collection of projects along this line of thinking,  I expect I'll find usefull improvements to my system after going through some of these!
+
+http://sasecurity.wikia.com/wiki/Yolo
+
 
 
